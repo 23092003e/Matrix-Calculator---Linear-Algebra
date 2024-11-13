@@ -10,20 +10,20 @@ root.iconbitmap("matrix.ico")
 root.title("Matrix Calculator")
 root.configure(bg = "#6a7491")
 
-tops = Frame(root, width = 500, height = 50, bg = "#dde0eb")
-tops.pack(side = TOP)
+tops = Frame(root, width = 500, height = 50, bg = "#474E64")   
+tops.pack(side = TOP)                                           
 
-f1 = Frame(root, width = 500, height = 100, bg = "#dde0eb")
-f1.pack(side = TOP, pady = (16, 0))
+f1 = Frame(root, width = 500, height = 100, bg = "#474E64")   
+f1.pack(side = TOP, pady = (16, 0))                            
 
-f2 = Frame(root, width = 500, height = 100, bg = "#dde0eb")
-f2.pack(side = TOP, pady = (32,0))
+f2 = Frame(root, width = 500, height = 100, bg = "#474E64")     
+f2.pack(side = TOP, pady = (32, 0))                            
 
-f3 = Frame(root, width = 500, height = 100, bg = "#dde0eb")
-f3.pack(side = TOP, pady=(32,0))
+f3 = Frame(root, width = 500, height = 100, bg = "#474E64")     
+f3.pack(side = TOP, pady = (32, 0))                
 
-f4 = Frame(root, width = 500, height = 100, bg = "#dde0eb")
-f4.pack(side = TOP, pady= (32,0))
+f4 = Frame(root, width = 500, height = 100, bg = "#474E64")     
+f4.pack(side = TOP, pady = (32, 0))  
 
 def Generate():
     # Handling Exceptions
@@ -83,23 +83,19 @@ def Generate():
     # Handling Exceptions
     except:                 
         # Change the state value of a button                                     
-        generate["state"] = DISABLED; 
-        save["state"] = NORMAL    
-        destroy["state"] = NORMAL
+        generate["state"] = NORMAL; 
+        save["state"] = DISABLED   
+        destroy["state"] = DISABLED
 
         # Displays message box if error occurs
         messagebox.showinfo(title = "Information", message = "Please fill in the data correctly!!!")
 
 def Destroy():
     # Change the state value of a button
-    delete["state"] = DISABLED; 
-    add["state"] = DISABLED
-    subtract["state"] = DISABLED; 
-    multiply["state"] = DISABLED
-    determinant["state"] = DISABLED; 
-    save["state"] = DISABLED
-    destroy["state"] = DISABLED; 
-    scalar["state"] = DISABLED
+    delete["state"] = DISABLED; add["state"] = DISABLED
+    subtract["state"] = DISABLED; multiply["state"] = DISABLED
+    determinant["state"] = DISABLED; save["state"] = DISABLED
+    destroy["state"] = DISABLED; scalar["state"] = DISABLED
     generate["state"] = NORMAL
 
     # Deleting value from entry widget (row and column) on f1
@@ -210,11 +206,11 @@ def Add():
     titleC = Label(f4, font = ("arial", "9","bold"), text = "A + B", bg = "#474E64", fg = "#FFFFFF")
     titleC.grid(row = 0, column = 0, columnspan=len(C[0]))
 
-    for i in range(len(C[0])):
-        for j in range(len(C[0])):
-            Entry = Entry(f4, width = 5, justify="center")
-            entry.grid(row = i+1, column = j)
-            entry.insert(0,C[i,j])
+    for i in range(len(C)):                                     
+        for j in range(len(C[0])):                              
+            entry = Entry(f4, width= 5, justify = "center")     
+            entry.grid(row = i+1, column = j)                   
+            entry.insert(0, C[i, j])   
 
 #Subtraction Operation
 def Subtract():
@@ -245,14 +241,14 @@ def Multiply():
     for widget in f4.winfo_children():
         widget.destroy()
 
-    titleC = Label(f4, font = ("arial", "g","bold"), text = "A x B", bg = "#474E64", fg = "#FFFFFF")
+    titleC = Label(f4, font = ("arial", "9","bold"), text = "A x B", bg = "#474E64", fg = "#FFFFFF")
     titleC.grid(row = 0, column = 0, columnspan = len(C[0]))
 
-    for i in range(len(C)):
-        for j in range(len(C[0])):
-            entry = Entry(f4, width=5, justify="center")
-            entry.grid(row = i + 1, column = j)
-            entry.insert(0, C[i,j])
+    for i in range(len(C)):                                     
+        for j in range(len(C[0])):                             
+            entry = Entry(f4, width= 5, justify = "center")     
+            entry.grid(row = i+1, column = j)                  
+            entry.insert(0, C[i, j]) 
 
 #Determinat
 def Determinant():
@@ -264,9 +260,9 @@ def Determinant():
     for entry in f4.winfo_children():
         entry.destroy()
 
-        titleD = Label(f4, font = ("arial", "9", "bold"), text = "det(A)", bg = "#474E64", fg = "#FFFFFF"); titleD.grid(row = 0, column = 0)   
-        entryD = Entry(f4, width= 5, justify = "center"); entryD.grid(row = 0, column = 1)
-        entryD.insert(0, D)
+    titleD = Label(f4, font = ("arial", "9", "bold"), text = "det(A)", bg = "#474E64", fg = "#FFFFFF"); titleD.grid(row = 0, column = 0)   
+    entryD = Entry(f4, width= 5, justify = "center"); entryD.grid(row = 0, column = 1)
+    entryD.insert(0, D)
 #Scalar
 def Scalar():
     C = A * K
